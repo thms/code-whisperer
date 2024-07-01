@@ -81,7 +81,7 @@ async def load_sidebar():
                     st.session_state.repo.connect(github_key)
                     st.session_state.repo.setRepository(github_repo)
                     st.session_state.enable_generate_documentation = True
-               else:
+                else:
                     st.success('Reading repository and vectorizing data into Astra DB. Please hang on...')
                     st.session_state.repo.connect(github_key)
                     st.session_state.repo.setRepository(github_repo)
