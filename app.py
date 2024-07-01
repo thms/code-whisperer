@@ -78,7 +78,10 @@ async def load_sidebar():
                 )
                 if result:
                     st.warning('The provided repository has already been loaded into Astra DB. Please select another one.')
-                else:
+                    st.session_state.repo.connect(github_key)
+                    st.session_state.repo.setRepository(github_repo)
+                    st.session_state.enable_generate_documentation = True
+               else:
                     st.success('Reading repository and vectorizing data into Astra DB. Please hang on...')
                     st.session_state.repo.connect(github_key)
                     st.session_state.repo.setRepository(github_repo)
