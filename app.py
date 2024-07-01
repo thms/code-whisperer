@@ -146,7 +146,7 @@ async def generateDocumentation():
             architectural_summary_placeholder
         ),
         advisor(
-            f"Find the main code for the {st.session_state.repo.getName()} repository",
+            f"Find the data model code for the {st.session_state.repo.getName()} repository",
             "Show me the domain model of the application in a structured way (like uml)",
             domain_model_placeholder
         )
