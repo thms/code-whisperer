@@ -78,8 +78,7 @@ async def load_sidebar():
                         "name": github_repo
                     }
                 )
-                #if result:
-                if False:
+                if result:
                     st.warning('The provided repository has already been loaded into Astra DB. Please select another one.')
                     st.session_state.repo.connect(github_key)
                     st.session_state.repo.setRepository(github_repo)
