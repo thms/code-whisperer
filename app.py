@@ -70,7 +70,7 @@ async def load_sidebar():
             github_repo = st.text_input("GitHub repo", value=st.secrets['GITHUB_REPO'])
             github_extensions = st.text_input("Process file types", value=".md, .py", help="Comma delimited string of file extensions to process")
 
-            submitted = st.form_submit_button("Submit")
+            submitted = st.form_submit_button("Submit", key='submit')
             if submitted:
                 # First check if the repo has already been loaded
                 result = collection.find_one(
@@ -78,8 +78,7 @@ async def load_sidebar():
                         "name": github_repo
                     }
                 )
-                #if result:
-                if False:
+                if result:
                     st.warning('The provided repository has already been loaded into Astra DB. Please select another one.')
                     st.session_state.repo.connect(github_key)
                     st.session_state.repo.setRepository(github_repo)
@@ -141,7 +140,7 @@ async def show_repository_data():
     print("In show_repository_data()")
     repository_data_placeholder.markdown(st.session_state.repository_data)
     if st.session_state.enable_generate_documentation:
-        submitted = tab1.button("Generate documentation")
+        submitted = tab1.button("Generate documentation", key='generate-docs')
         if submitted:
             tab1.success('Generating documentation based on source code in the repository. Please hang on...')
             await generateDocumentation()
